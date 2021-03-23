@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page-content">
+        <div class="splash">
+            <h2>Back in the Habit | a habit tracker application.</h2>
+            <h4>Welcome back, {{user.username}}</h4>
+            <h3>My Dashboard</h3>
+        </div>
+        <div class="new-habit">
+        <a href="{% url 'add-habit' %}">Start a new habit</a> | <a href="#">Track an existing habit</a>
+        </div>
+        <div class="habit-container">
+            <div class="habit-feed">
+                <div id="new-habit"></div>
+                {% for habit in habits %}
+                <div class="one-habit">
+                    <p class="habit-title"> {{ habit.title }} </p>
+                    <p class="habit-description">{{ habit.description }}</p>
+                    <p class="habit-goal">{{ habit.goal }}</p>
+                    <p class="habit-goal-type"> {{ habit.goal_type }}</p>
+                    <p class="habit-author"> {{ habit.author }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="line-graph">
+            <span>Placeholder for graph</span>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

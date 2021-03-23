@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/css/uikit.min.css" />
+<link rel="stylesheet" href="{% static 'style.css' %}"/>
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit-icons.min.js"></script>
+    <title>Back in the Habit.</title>
+</head>
+<body>  
+    <div class="whole-page">
+        <div class="sign-in-out">
+            <nav>
+                {% if user.is_authenticated %}
+                <a href="/accounts/logout">Sign Out</a>
+                {% else %}
+                <a href="/accounts/login/">Sign In</a> |
+                <a href="/accounts/register/">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+        <div class="inner-page">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+</html>
